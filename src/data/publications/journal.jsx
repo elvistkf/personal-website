@@ -28,7 +28,7 @@ const journal = [{
         url: "https://ieeexplore.ieee.org/abstract/document/9125950/",
         tags: ["Multi-Agent Systems", "Integrity Attack", "Optimisation", "Consensus Control"],
         status: "Published",
-        citation: 6
+        citation: 8,
     },
 ];
 

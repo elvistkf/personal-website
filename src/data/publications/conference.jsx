@@ -11,7 +11,7 @@ const conference = [{
         url: "https://ieeexplore.ieee.org/abstract/document/9683215/",
         tags: ["Multi-Agent Systems", "Nonlinear Systems", "Consensus Control", "Event-Triggered Systems", "Machine Learning"],
         status: "Published",
-        citation: 0
+        citation: 1,
     },
     {
         authors: (<span><AuthorHighlight>Kam Fai Elvis Tsang</AuthorHighlight>, Junfeng Wu and Ling Shi</span>),
@@ -23,7 +23,7 @@ const conference = [{
         url: "https://ieeexplore.ieee.org/abstract/document/9303799/",
         tags: ["Multi-Agent Systems", "Distributed Optimisation", "Event-Triggered Systems", "Stochastic Algorithms"],
         status: "Published",
-        citation: 0
+        citation: 0,
     },
     {
         authors: (<span>Yik Ben Wong, Yawen Chen, <AuthorHighlight>Kam Fai Elvis Tsang</AuthorHighlight>, Winnie Suk Wai Leung and Ling Shi</span>),
@@ -34,7 +34,7 @@ const conference = [{
         url: "https://ieeexplore.ieee.org/abstract/document/9305430/",
         tags: ["Robotics", "Exoskeleton", "Optimisation"],
         status: "Published",
-        citation: 2
+        citation: 2,
     },
     {
         authors: (<span><AuthorHighlight>Kam Fai Elvis Tsang</AuthorHighlight>, Junfeng Wu and Ling Shi</span>),
@@ -45,7 +45,7 @@ const conference = [{
         url: "https://ieeexplore.ieee.org/abstract/document/8815278/",
         tags: ["Multi-Agent Systems", "Consensus Control", "Event-Triggered Systems", "Stochastic Algorithms"],
         status: "Published",
-        citation: 3
+        citation: 3,
     },
     {
         authors: (<span>Cheuk Fung Raphael Wong, <AuthorHighlight>Kam Fai Elvis Tsang</AuthorHighlight>, Ling Shi</span>),
@@ -56,7 +56,7 @@ const conference = [{
         url: "https://ieeexplore.ieee.org/abstract/document/8765025/",
         tags: ["Multi-Agent Systems", "Consensus Control"],
         status: "Published",
-        citation: 1
+        citation: 1,
     },
     {
         authors: (<span><AuthorHighlight>Kam Fai Elvis Tsang</AuthorHighlight>, Yuqing Ni, Cheuk Fung Raphael Wong, Ling Shi</span>),
@@ -67,7 +67,7 @@ const conference = [{
         url: "https://ieeexplore.ieee.org/abstract/document/8581092",
         tags: ["Multi-Agent Systems", "Robotics", "Path Finding", "Artificial Intelligence"],
         status: "Published",
-        citation: 8
+        citation: 9,
     }
 ];
 
