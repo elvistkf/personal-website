@@ -1,25 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import styled from 'styled-components';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Projects from './pages/Projects';
+import Footer from './components/Footer';
+import Publications from './pages/Publications';
+
+const Container = styled.div`
+  background-color: #313131;
+  min-height: 80vh;
+`
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<Router>
+			<Container>
+				<Navbar />
+				<Routes >
+					<Route path="/" element={< Home />} />
+					<Route path="/projects" element={< Projects />} />
+					<Route path="/publications" element={< Publications />} />
+					<Route path="/*" element={< Home />} />
+				</Routes>
+			</Container>
+			<Footer />
+		</Router>
+	);
 }
 
 export default App;

@@ -1,0 +1,22 @@
+.bg-container {
+    background-color: #313131;
+    min-height: 90vh;
+    height: auto;
+    padding-bottom: 5em;
+    color: white;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+}
+
+@keyframes extend {
+    0% {
+        transform: scaleX(0);
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
