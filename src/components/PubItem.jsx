@@ -1,24 +1,26 @@
 import React from 'react'
 import styled from 'styled-components';
+import colourConfig from '../config/colourConfig';
+import fontConfig from '../config/fontConfig';
 import tagConfig from '../config/tagConfig';
-import './PubItem.css'
 import Tag from './Tag';
 
-const titleFontSize = "15px";
 const innerMargin = "5px";
 
 const Container = styled.div`
-    display: grid;
+    display: flex;
     max-width: 100%;
-    grid-template-columns: [first] 25px [line2] 25px [line3] auto [end];
-    margin-bottom: 0px;
+    margin-bottom: ${props => props.id === 1 ? "0em" : "0.5em"};
     border-radius: 0.5em;
     padding: 5px 5px 5px 5px;
     transition: background-color 0.25s;
+    align-items: flex-start;
 
     &:hover {
-        background-color: #414141;
+        /* background-color: #414141; */
+        background-color: ${colourConfig.itemBoxHover};
         cursor: ${props => props.hasUrl ? "pointer" : "default"};
+        color: ${fontConfig.global.hoverColour};
     }
 
     @media screen and (max-width: 768px) {
@@ -26,26 +28,36 @@ const Container = styled.div`
         padding: 2px 2px 2px 2px;
     }
 
-    margin-bottom: ${props => props.id === 1 ? "0em" : "0.5em"};
 `
 
 const Number = styled.div`
-    display: inline-grid;
-    font-size: ${titleFontSize};
-    color: #898989;
+    font-size: ${fontConfig.pubTitle.size};
+    color: ${fontConfig.pubNumber.colour};
+    border-radius: 100%;
+    aspect-ratio: 1;
+    align-items: center;
 `
 
 const Record = styled.div`
     display: inline-block;
-    width: auto;
+    width: 100%;
     overflow: hidden;
     overflow-wrap: break-word;
-    /* margin-bottom: 1em; */
-    font-size: 14px;
+    font-size: ${fontConfig.pubDetails.size};
+    /* color: ${fontConfig.pubDetails.colour}; */
+
+    @media screen and (max-width: 768px) {
+        font-size: ${fontConfig.pubDetails.mobileSize};
+    }
 `
 
 const Title = styled.b`
-    font-size: ${titleFontSize};
+    font-size: ${fontConfig.pubTitle.size};
+    /* color: ${fontConfig.pubTitle.colour}; */
+
+    @media screen and (max-width: 768px) {
+        font-size: ${fontConfig.pubTitle.mobileSize};
+    }
 `
 
 const Authors = styled.div`
@@ -54,28 +66,48 @@ const Authors = styled.div`
 `
 
 const PubDetails = styled.div`
-    
 `
 
 const Publication = styled.span`
-    color: cyan;
+    color: ${fontConfig.pubPublication.colour};
 `
+
 
 const TagContainer = styled.div`
     display: flex;
+    flex-wrap: wrap;
+    row-gap: ${innerMargin};
     margin-top: ${props => props.hasTags ? innerMargin : 0};
-
-    @media screen and (max-width: 768px) {
-        visibility: hidden;
-        height: 0;
-    }
+    align-items: center;
+    justify-content: flex-start;
 `
 
 const Divider = styled.div`
     border-left: 1px solid #626262;
-    height: 100%;
+    /* height: 5.5em; */
     margin-left: 0.75em;
     margin-right: 0.5em;
+    align-self: stretch;
+`
+
+const Citation = styled.div`
+    font-size: ${fontConfig.pubDetails.mobileSize};
+    border-radius: 0.5em;
+    background-color: #3d405b;
+    width: max-content;
+    padding: 4px 8px 4px 8px;
+    align-self: center;
+
+    margin-left: ${props => props.mobile === "true" ? "" : "auto"};
+    visibility: ${props => props.mobile === "true" ? "hidden" : "visible"};
+    height: ${props => props.mobile === "true" ? "0px" : ""};
+
+    @media screen and (max-width: 1000px) {
+        visibility: ${props => props.mobile === "true" ? "visible" : "hidden"};
+        margin-right: ${props => props.mobile === "true" ? "auto" : ""};
+        margin-top: 5px;
+        height: ${props => props.mobile === "true" ? "auto" : "0px"};
+    }
 `
 
 function PubItem(props) {
@@ -85,7 +117,6 @@ function PubItem(props) {
     const hasTags = item.hasOwnProperty('tags');
     const prefix = type.charAt(0).toUpperCase();
 
-    console.log(item.key)
     var tags;
     if (hasTags) {
         tags = item.tags.slice(0, 5);
@@ -121,6 +152,23 @@ function PubItem(props) {
         <PubDetails></PubDetails>
     )
 
+    const pubCitation = item.citation > 0 ? (
+        <Citation>
+            {item.citation} Citations
+        </Citation>
+    ) : (
+        <span></span>
+    )
+
+    const pubCitationMobile = item.citation > 0 ? (
+        <Citation mobile="true">
+            {item.citation} Citations
+        </Citation>
+    ) : (
+        <span></span>
+    )
+
+
     return (
         <Container onClick={() => hasUrl ? window.open(item.url) : {}} hasUrl={hasUrl} id={props.id}>
             <Number>[{prefix + props.id.toString()}]</Number>
@@ -129,6 +177,7 @@ function PubItem(props) {
                 <Title>{item.title}</Title>
                 <Authors>{item.authors}</Authors>
                 {pubDetails}
+                {pubCitationMobile}
                 <TagContainer hasTags={hasTags}>
                     {
                         hasTags ? tags.map((tag, index) => (
@@ -136,6 +185,7 @@ function PubItem(props) {
                         )) :
                             (<span></span>)
                     }
+                    {pubCitation}
                 </TagContainer>
             </Record>
         </Container>

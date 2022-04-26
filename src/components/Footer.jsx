@@ -2,9 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import {FaLinkedinIn, FaGithub} from "react-icons/fa";
 import {SiGooglescholar} from "react-icons/si";
+import colourConfig from "../config/colourConfig";
 
 const Container = styled.div`
-    background-color: #212121;
+    background-color: ${colourConfig.footer};
     padding: 2em 1em 2em 1em;
     border-top: 1px solid #464646;
     min-height: 7vh;

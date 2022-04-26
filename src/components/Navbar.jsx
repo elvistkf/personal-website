@@ -4,9 +4,10 @@ import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import './Navbar.css'
 import dividerConfig from '../config/dividerConfig';
+import colourConfig from '../config/colourConfig';
 
 const Container = styled.div`
-    background-color: #212121;
+    background-color: ${colourConfig.navbar};
     padding: 0.75em 1em 0.75em 1em;
     color: white;
     display: flex;
@@ -15,13 +16,15 @@ const Container = styled.div`
     min-height: 2.2em;
     position: sticky;
     top: 0;
-    border-bottom: 1px solid #464646;
+    /* border-bottom: 1px solid ${colourConfig.divider}; */
     z-index: 50;
 `;
 
 const SubContainer = styled.div`
     display: flex;
     align-items: center;
+    /* width: 1300px;
+    margin: auto; */
 `
 
 const Items = styled.div`

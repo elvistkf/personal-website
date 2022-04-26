@@ -1,7 +1,7 @@
 const daProjects = [{
         title: "Covid-19 Data Analysis",
         description: "This project aims to extract insights from public COVID-19 data.",
-        // img: "https://www.folkhalsomyndigheten.se/contentassets/4a26a70681864606847f21db5da8c1c8/covid-19-23311-cdc.jpg?width=600&height=400&mode=crop",
+        img: "https://www.gu.se/sites/default/files/dynamic-image/dynamic_image_1014_570/public/2020-05/corona-drupal.jpg?media_id=5475&width=976&height=525",
         url: "https://github.com/elvistkf/data-analytics-portfolio/tree/main/1_Covid%20Data",
         tags: ['Python', 'SQL', 'Tableau']
     },

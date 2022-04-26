@@ -1,7 +1,7 @@
 const tagConfig = {
     tagColours: {
         'Python': {
-            bg: 'DodgerBlue',
+            bg: 'SteelBlue',
             text: 'black'
         },
         'SQL': {
@@ -9,15 +9,19 @@ const tagConfig = {
             text: 'black'
         },
         'Tableau': {
-            bg: 'green',
-            text: 'white'
+            bg: 'RoyalBlue',
+            text: 'black'
         },
         'Shell': {
-            bg: '#555555',
-            text: 'white'
+            bg: 'SpringGreen',
+            text: 'black'
         },
         'MATLAB': {
             bg: 'Sienna',
+            text: 'white'
+        },
+        'Java': {
+            bg: 'Red',
             text: 'white'
         }
     },

@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-// import tagColours from '../config/tagColours'
 import tagConfig from '../config/tagConfig'
 
 const Container = styled.div`
@@ -21,24 +20,15 @@ const Container = styled.div`
     }
 
     @media screen and (max-width: 768px) {
-        width: min-content;
+        width: max-content;
         overflow-wrap: break-word;
     }
-
-    /* @media screen and (min-width: 769px) and (max-width: 1000px) {
-        font-size: 9px;
-    }
-
-    @media screen and (min-width: 1001px) and (max-width: 1200px) {
-        font-size: 10px;
-    } */
 `;
 
 const Text = styled.span`
     display: inline-block;
     vertical-align: middle;
     margin: auto;
-    /* line-height: 8px; */
 `
 
 function Tag(props) {

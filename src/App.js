@@ -7,9 +7,10 @@ import Home from './pages/Home';
 import Projects from './pages/Projects';
 import Footer from './components/Footer';
 import Publications from './pages/Publications';
+import colourConfig from './config/colourConfig';
 
 const Container = styled.div`
-  background-color: #313131;
+  background-color: ${colourConfig.background};
   min-height: 80vh;
 `
 

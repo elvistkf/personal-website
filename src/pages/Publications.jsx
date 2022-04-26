@@ -6,12 +6,14 @@ import conference from '../data/publications/conference';
 import thesis from '../data/publications/thesis';
 import "../common.css";
 import PageTitle from '../components/PageTitle';
+import colourConfig from '../config/colourConfig';
+import fontConfig from '../config/fontConfig';
 
 const BackgroundContainer = styled.div`
-	background-color: #212121;
+	background-color: ${colourConfig.background};
 	padding-top: 2em;
 	padding-bottom: 5em;
-	color: white;
+	color: ${fontConfig.global.colour};
 	animation: fade 0.5s ease-in;
 	
 	@media screen and (max-width: 768px) {
@@ -21,7 +23,7 @@ const BackgroundContainer = styled.div`
 
 const BoxContainer = styled.div`
 	border-radius: 1em;
-	background-color: #313131;
+	background-color: ${colourConfig.itemBox};
 	width: 50%;
 	margin: auto;
 	/* min-height: 8vh; */
@@ -33,8 +35,8 @@ const BoxContainer = styled.div`
 	}
 
 	@media screen and (max-width: 768px) {
-        width: 75%;
-		padding: 1.25em 1.25em 1.25em 1.25em;
+        width: 77.5%;
+		padding: 1em 1em 1em 1em;
     }
 `
 
@@ -42,6 +44,7 @@ function Publications() {
 	const jLength = journal.length
 	const cLength = conference.length
 	const tLength = thesis.length
+	// Show result as JSON
 	return (
 		<BackgroundContainer>
 			<PageTitle title="Journal Papers" />
