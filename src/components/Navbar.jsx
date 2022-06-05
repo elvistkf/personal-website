@@ -96,10 +96,10 @@ function Navbar() {
             item.classList.remove("active");
         }
         switch (currentLocation) {
-            case "/personal-website/projects":
+            case "/projects":
                 document.getElementById("nav-projects").classList.add("active");
                 break;
-            case "/personal-website/publications":
+            case "/publications":
                 document.getElementById("nav-pub").classList.add("active");
                 break;
             default:
@@ -126,15 +126,15 @@ function Navbar() {
                 <Logo id="nav-logo">Elvis Tsang</Logo>
                 <Divider id="nav-div" />
                 <Items id="nav-items">
-                    <NavLink to="/personal-website" onClick={activate} className="navlink" id="nav-home">
+                    <NavLink to="/" onClick={activate} className="navlink" id="nav-home">
                         <AiOutlineHome className='nav-icon' />
                         Home
                     </NavLink>
-                    <NavLink to="/personal-website/projects" onClick={activate} className="navlink" id="nav-projects">
+                    <NavLink to="/projects" onClick={activate} className="navlink" id="nav-projects">
                         <AiOutlineProject className='nav-icon' />
                         Projects
                     </NavLink>
-                    <NavLink to="/personal-website/publications" onClick={activate} className="navlink" id="nav-pub">
+                    <NavLink to="/publications" onClick={activate} className="navlink" id="nav-pub">
                         <AiOutlineFileText className='nav-icon' />
                         Publications
                     </NavLink>
