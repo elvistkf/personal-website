@@ -113,15 +113,15 @@ const Citation = styled.div`
 function PubItem(props) {
     const item = props.item;
     const type = props.type;
-    const hasUrl = item.hasOwnProperty('url');
-    const hasTags = item.hasOwnProperty('tags');
-    const prefix = type.charAt(0).toUpperCase();
+    const hasUrl = item.hasOwnProperty('url') && item.url != null;
+    const hasTags = item.hasOwnProperty('tags') && item.tags != null;
+    const prefix = type.charAt(0).toUpperCase(); 
 
     var tags;
     if (hasTags) {
         tags = item.tags.slice(0, 5);
         tags.sort((a, b) => {
-            return (tagConfig.tagOrders[a] || 100) - (tagConfig.tagOrders[b] || 100);
+            return (tagConfig.tagOrders[a] || 10) - (tagConfig.tagOrders[b] || 10);
         })
     }
 
@@ -129,19 +129,20 @@ function PubItem(props) {
         <PubDetails>
             <Publication>{item.publication}, </Publication>
             {
-                item.status === "Published" ? (<span>Volume {item.volume}, Issue {item.issue}, Pages {item.pages}, {item.year}.</span>) :
-                    item.status === "Accepted" ? (<span>Accepted.</span>) :
-                        item.status === "Submitted" ? (<span>Submitted.</span>) :
-                            <span></span>
+                item.status === "Published" ? <span>Volume {item.volume}, Issue {item.issue}, Pages {item.pages}, {item.year}.</span> :
+                item.status === "Early Access" ? <span>Early Access, {item.year}.</span> :
+                item.status === "Accepted" ? <span>Accepted.</span> :
+                item.status === "Submitted" ? <span>Submitted.</span> :
+                <span></span>
             }
         </PubDetails>
     ) : (type === "conference") ? (
         <PubDetails>
             <Publication>{item.publication}, </Publication>
             {
-                item.status === "Published" ? (<span>{item.location}, {item.year}.</span>) :
-                    item.status === "Accepted" ? (<span>Accepted.</span>) :
-                        (<span></span>)
+                item.status === "Published" ? <span>{item.location}, {item.year}.</span> :
+                item.status === "Accepted" ? <span>Accepted.</span> :
+                <span></span>
             }
         </PubDetails>
     ) : (type === "thesis") ? (
@@ -154,20 +155,15 @@ function PubItem(props) {
 
     const pubCitation = item.citation > 0 ? (
         <Citation>
-            {item.citation} Citations
+            {item.citation} Citation{ item.citation > 1 ? ("s") : ("")}
         </Citation>
-    ) : (
-        <span></span>
-    )
+    ) : (<span></span>)
 
     const pubCitationMobile = item.citation > 0 ? (
         <Citation mobile="true">
             {item.citation} Citations
         </Citation>
-    ) : (
-        <span></span>
-    )
-
+    ) : (<span></span>)
 
     return (
         <Container onClick={() => hasUrl ? window.open(item.url) : {}} hasUrl={hasUrl} id={props.id}>

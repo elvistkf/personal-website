@@ -1,13 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import PubItem from '../components/PubItem';
-import journal from '../data/publications/journal';
-import conference from '../data/publications/conference';
-import thesis from '../data/publications/thesis';
+// import journal from '../data/publications/journal';
+// import conference from '../data/publications/conference';
+// import thesis from '../data/publications/thesis';
 import "../common.css";
 import PageTitle from '../components/PageTitle';
 import colourConfig from '../config/colourConfig';
 import fontConfig from '../config/fontConfig';
+import Loading from '../components/Loading';
+import ErrorFetching from '../components/ErrorFetching';
+import useFetch from '../hooks/useFetch';
 
 const BackgroundContainer = styled.div`
 	background-color: ${colourConfig.background};
@@ -40,33 +43,46 @@ const BoxContainer = styled.div`
     }
 `
 
-function Publications() {
-	const jLength = journal.length
-	const cLength = conference.length
-	const tLength = thesis.length
-	// Show result as JSON
+function PublicationsContent(data) {
+	var types = new Set();
+	for (var i=0; i < data.length; i++) {
+		types.add(data[i].type)
+	}
+
+	var innerContent = Array.from(types).map((type) => {
+		const papers = data.filter((item) => item.type === type)
+		const length = papers.length;
+		const title = type.replace(/(^\w|\s\w)/g, m => m.toUpperCase()) + " Papers";
+
+		return (
+			<span key={type}>
+				<PageTitle title={title}/>
+				<BoxContainer>
+					{
+						papers.map((item, index) => (
+							<PubItem id={length - index} item={item} type={type} key={item.id}></PubItem>
+						))
+					}
+				</BoxContainer>
+			</span>
+		)
+	})
 	return (
 		<BackgroundContainer>
-			<PageTitle title="Journal Papers" />
-			<BoxContainer>
-				{journal.map((item, index) => (
-					<PubItem id={jLength - index} item={item} type="journal" key={index}></PubItem>
-				))}
-			</BoxContainer>
-			<PageTitle title="Conference Papers" />
-			<BoxContainer>
-				{conference.map((item, index) => (
-					<PubItem id={cLength - index} item={item} type="conference" key={index}></PubItem>
-				))}
-			</BoxContainer>
-			<PageTitle title="Thesis" />
-			<BoxContainer>
-				{thesis.map((item, index) => (
-					<PubItem id={tLength - index} item={item} type="thesis" key={index}></PubItem>
-				))}
-			</BoxContainer>
+			{innerContent}
 		</BackgroundContainer>
-	);
+	)
 }
 
-export default Publications;
+export default function Publications() {
+	const {status, data} = useFetch("http://ec2-44-234-228-107.us-west-2.compute.amazonaws.com:8443/api/v1/publication/")
+
+	switch (status) {
+		case 'loading':
+			return <Loading/>
+		case 'fetched':
+			return PublicationsContent(data);
+		default:
+			return <ErrorFetching/>;
+	}	
+}

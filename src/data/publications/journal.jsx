@@ -2,6 +2,14 @@ import React from "react";
 import AuthorHighlight from "../../components/AuthorHighlight";
 
 const journal = [{
+        authors: (<span>Wei Huo, <AuthorHighlight>Kam Fai Elvis Tsang</AuthorHighlight>, Yamin Yan, Karl Henrik Johansson and Ling Shi </span>),
+        title: "Distributed Nash Equilibrium Seeking with Stochastic Event-Triggered Mechanism",
+        publication: "Automatica",
+        tags: ["Game Theory", "Multi-Agent Systems", "Event-Triggered Systems", "Stochastic Algorithms"],
+        status: "Submitted",
+        citation: 0
+    },
+    {
         authors: (<span><AuthorHighlight>Kam Fai Elvis Tsang</AuthorHighlight>, Mengyu Huang, Ling Shi and Karl Henrik Johansson</span>),
         title: "Stochastic Event-Triggered Algorithm for Distributed Convex Optimisation",
         publication: "IEEE Transaction on Control of Network Systems",
@@ -14,7 +22,7 @@ const journal = [{
         title: "Strategic DoS Attack in Continuous Space for Cyber-Physical Systems over Wireless Networks",
         publication: "IEEE Transactions on Signal and Information Processing over Networks",
         tags: ["DoS Attack", "Reinforcement Learning", "Deep Learning", "Cyber-Physical Systems"],
-        status: "Submitted",
+        status: "Accepted",
         citation: 0
     },
     {

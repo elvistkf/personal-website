@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import ErrorFetching from '../components/ErrorFetching';
+import Loading from '../components/Loading';
 import PageTitle from '../components/PageTitle';
 import ProjectItem from '../components/ProjectItem';
 import colourConfig from '../config/colourConfig';
 import fontConfig from '../config/fontConfig';
-import autoProjects from '../data/projects/autoProjects';
-import daProjects from "../data/projects/daProjects";
-import researchProjects from '../data/projects/researchProjects';
+import useFetch from '../hooks/useFetch';
 
 const BackgroundContainer = styled.div`
 	background-color: ${colourConfig.background};
@@ -21,29 +21,44 @@ const BackgroundContainer = styled.div`
 	}
 `
 
-function Projects() {
+function ProjectsContent(data) {
+	var types = new Set();
+	for (var i=0; i < data.length; i++) {
+		types.add(data[i].type)
+	}
+
+	var innerContent = Array.from(types).map((type) => {
+		const projects = data.filter((item) => item.type === type)
+		const title = type.replace(/(^\w|\s\w)/g, m => m.toUpperCase()) + " Projects";
+
+		return (
+			<span key={type}>
+				<PageTitle title={title}/>
+				{
+					projects.map((item, index) => (
+						<ProjectItem item={item} key={index}/>
+					))
+				}
+			</span>
+		)
+	})
 	return (
 		<BackgroundContainer>
-			<PageTitle title="Data Analytics" />
-			{
-				daProjects.map((item, index) => (
-					<ProjectItem item={item} key={index}></ProjectItem>
-				))
-			}
-			<PageTitle title="Automation Projects" />
-			{
-				autoProjects.map((item, index) => (
-					<ProjectItem item={item} key={index}></ProjectItem>
-				))
-			}
-			<PageTitle title="Research Projects" />
-			{
-				researchProjects.map((item, index) => (
-					<ProjectItem item={item} key={index}></ProjectItem>
-				))
-			}
+			{innerContent}
 		</BackgroundContainer>
-	);
+	)
 }
 
-export default Projects;
+export default function Projects() {
+	const {status, data} = useFetch("http://ec2-44-234-228-107.us-west-2.compute.amazonaws.com:8443/api/v1/project/")
+
+	switch (status) {
+		case 'loading':
+			return <Loading/>
+		case 'fetched':
+			return ProjectsContent(data);
+		default:
+			return <ErrorFetching/>
+	}
+}
+	

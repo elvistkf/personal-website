@@ -1,6 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 import colourConfig from "../config/colourConfig";
+import tagConfig from '../config/tagConfig';
 import Tag from "./Tag";
 
 const BoxContainer = styled.div`
@@ -18,9 +19,7 @@ const BoxContainer = styled.div`
     transition: background-color 0.25s;
 
     &:hover{
-        /* background-color: #414141; */
         background-color: ${colourConfig.itemBoxHover};
-        /* opacity: 50%; */
         cursor: ${props => props.hasUrl ? "pointer" : "default"};
     }
 
@@ -50,6 +49,7 @@ const DescriptionContainer = styled.div`
     min-height: 2em;
     margin-bottom: 2em;
     line-height: 150%;
+    white-space: pre-line;
 `
 
 const TagContainer = styled.div`
@@ -69,30 +69,17 @@ const ImageContainer = styled.img`
     }
 `
 
-// const ImageContainer = styled.div`
-//     /* width: 100%; */
-//     height: auto;
-//     width: auto;
-//     /* max-height: 12em; */
-
-//     border-radius: 0 0.5em 0.5em 0;
-//     border: 1px solid red;
-
-//     /* background: ${props => props.img} no-repeat center center / contain; */
-//     /* background: pink url(//dummyimage.com/300) no-repeat center center / contain; */
-//     /* background: green; */
-//     z-index: 100;
-//     @media screen and (max-width: 768px) {
-//         visibility: hidden;
-//         width: 0;
-//     }
-// `
-
 function ProjectItem(props) {
     const item = props.item;
     const tags = item.tags;
-    const hasUrl = item.hasOwnProperty('url');
-    tags.sort();
+    const hasUrl = item.hasOwnProperty('url') && item.url != null;
+    const hasSubTags = item.hasOwnProperty('subTags') && item.subTags != null;
+    // tags.sort();
+    tags.sort((a, b) => {
+        return (tagConfig.tagOrders[a] || 100) - (tagConfig.tagOrders[b] || 100);
+    })
+
+    const subTags = hasSubTags ? item.subTags : null;
 
     return (
         <BoxContainer onClick={() => hasUrl ? window.open(item.url) : {}} hasUrl={hasUrl}>
@@ -105,14 +92,18 @@ function ProjectItem(props) {
                 </DescriptionContainer>
                 <TagContainer>
                     {
+                        hasSubTags ? 
                         tags.map((tag, index) => (
-                            <Tag text={tag} key={index}></Tag>
+                            <Tag text={tag} key={index} subtags={tag in subTags ? subTags[tag] : null} />
+                        ))
+                        :
+                        tags.map((tag, index) => (
+                            <Tag text={tag} key={index} />
                         ))
                     }
                 </TagContainer>
             </TextContainer>
-            <ImageContainer src={item.hasOwnProperty('img') ? item.img : require('../assets/logo192.png')} />
-            {/* <ImageContainer img={item.hasOwnProperty('img') ? item.img : '../assets/logo192.png'}/> */}
+            <ImageContainer src={item.hasOwnProperty('img') ? item.img : ""} />
         </BoxContainer>
     )
 }

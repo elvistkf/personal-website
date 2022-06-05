@@ -2,6 +2,7 @@ import React from 'react'
 import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa'
 import { SiGooglescholar } from 'react-icons/si'
 import styled from 'styled-components'
+import { increase_brightness } from '../../common'
 import colourConfig from '../../config/colourConfig'
 import fontConfig from '../../config/fontConfig'
 
@@ -139,10 +140,10 @@ const LinkBtn = styled.div`
     display: flex;
     align-items: center;
     margin-right: 1em;
-    opacity: 75%;
+    /* opacity: 80%; */
     &:hover{
         cursor: pointer;
-        opacity: 100%;
+        background-color: ${props => increase_brightness(props.colour, 20)};
     }
     font-size: 14px;
 
@@ -177,22 +178,22 @@ function HomeHeader() {
                     <Description>
                         I am a Ph.D. candidate in Electrical Engineering with focus on Decision Making in Distributed Systems, inspired by Optimisation, Machine Learning and Data-Driven approaches.
                         <br /><br />
-                        Currently seeking career opportunities as a Data Analyst in Toronto, Ontario.
+                        Currently seeking career opportunities as a Data Analyst in Hong Kong.
                     </Description>
                     <LinkContainer>
-                        <LinkBtn colour="RoyalBlue" onClick={() => window.open("https://www.linkedin.com/in/elviskftsang/")}>
+                        <LinkBtn colour="#4169e1" onClick={() => window.open("https://www.linkedin.com/in/elviskftsang/")}>
                             <FaLinkedin />
                             <LinkText>Linkedin</LinkText>
                         </LinkBtn>
-                        <LinkBtn colour="RebeccaPurple" onClick={() => window.open("https://github.com/elvistkf")}>
+                        <LinkBtn colour="#663399" onClick={() => window.open("https://github.com/elvistkf")}>
                             <FaGithub />
                             <LinkText>GitHub</LinkText>
                         </LinkBtn>
-                        <LinkBtn colour="Coral" onClick={() => window.open("https://scholar.google.com/citations?user=IPSwm9sAAAAJ")}>
+                        <LinkBtn colour="#FF7F50" onClick={() => window.open("https://scholar.google.com/citations?user=IPSwm9sAAAAJ")}>
                             <SiGooglescholar />
                             <LinkText>Google Scholar</LinkText>
                         </LinkBtn>
-                        <LinkBtn colour="OrangeRed" onClick={() => window.open("mailto:kfetsang@kth.se")}>
+                        <LinkBtn colour="#ff4500" onClick={() => window.open("mailto:kfetsang@kth.se")}>
                             <FaEnvelope />
                             <LinkText>Email</LinkText>
                         </LinkBtn>

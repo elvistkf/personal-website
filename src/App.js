@@ -20,10 +20,11 @@ function App() {
 			<Container>
 				<Navbar />
 				<Routes >
-					<Route path="/" element={< Home />} />
-					<Route path="/projects" element={< Projects />} />
-					<Route path="/publications" element={< Publications />} />
-					<Route path="/*" element={< Home />} />
+					<Route path="/personal-website" element={< Home />} />
+					<Route path="/personal-website/projects" element={< Projects />} />
+					{/* <Route path="/personal-website/projects2" element={< Projects2 />} /> */}
+					<Route path="/personal-website/publications" element={< Publications />} />
+					<Route path="/personal-website/*" element={< Home />} />
 				</Routes>
 			</Container>
 			<Footer />
