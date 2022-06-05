@@ -76,7 +76,7 @@ function PublicationsContent(data) {
 
 export default function Publications() {
 	// const {status, data} = useFetch("http://ec2-44-234-228-107.us-west-2.compute.amazonaws.com:8443/api/v1/publication/")
-	const {status, data} = useFetch("/api/v1/publication/")
+	const {status, data} = useFetch("/api/api/v1/publication/")
 
 	switch (status) {
 		case 'loading':
