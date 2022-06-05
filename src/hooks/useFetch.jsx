@@ -14,6 +14,7 @@ export default function useFetch(url) {
                 setStatus('fetched');
             }
             catch (error) {
+                console.error(error);
                 setStatus('error');
             }
         };
