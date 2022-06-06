@@ -50,7 +50,7 @@ function ProjectsContent(data) {
 }
 
 export default function Projects() {
-	const {status, data} = useFetch("http://ec2-44-234-228-107.us-west-2.compute.amazonaws.com:8443/api/v1/project/")
+	const {status, data} = useFetch("https://api.elvistkf.synology.me/api/v1/project/")
 
 	switch (status) {
 		case 'loading':
