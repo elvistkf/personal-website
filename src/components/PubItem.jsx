@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 import colourConfig from '../config/colourConfig';
 import fontConfig from '../config/fontConfig';
-import tagConfig from '../config/tagConfig';
+import sortConfig from '../config/sortConfig';
 import Tag from './Tag';
 
 const innerMargin = "5px";
@@ -121,7 +121,7 @@ function PubItem(props) {
     if (hasTags) {
         tags = item.tags.slice(0, 5);
         tags.sort((a, b) => {
-            return (tagConfig.tagOrders[a] || 10) - (tagConfig.tagOrders[b] || 10);
+            return (sortConfig.tagOrders[a] || 10) - (sortConfig.tagOrders[b] || 10);
         })
     }
 

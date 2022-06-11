@@ -1,7 +1,8 @@
 import React from "react";
 import styled from 'styled-components';
 import colourConfig from "../config/colourConfig";
-import tagConfig from '../config/tagConfig';
+import sortConfig from "../config/sortConfig";
+// import tagConfig from '../config/tagConfig';
 import Tag from "./Tag";
 
 const BoxContainer = styled.div`
@@ -76,7 +77,7 @@ function ProjectItem(props) {
     const hasSubTags = item.hasOwnProperty('subTags') && item.subTags != null;
     // tags.sort();
     tags.sort((a, b) => {
-        return (tagConfig.tagOrders[a] || 100) - (tagConfig.tagOrders[b] || 100);
+        return (sortConfig.tagOrders[a] || 100) - (sortConfig.tagOrders[b] || 100);
     })
 
     const subTags = hasSubTags ? item.subTags : null;

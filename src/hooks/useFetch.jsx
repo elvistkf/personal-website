@@ -23,5 +23,5 @@ export default function useFetch(url) {
         fetchData();
     }, [url]);
 
-    return { status, data};
+    return { status, data };
 }

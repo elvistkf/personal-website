@@ -6,6 +6,7 @@ import PageTitle from '../components/PageTitle';
 import ProjectItem from '../components/ProjectItem';
 import colourConfig from '../config/colourConfig';
 import fontConfig from '../config/fontConfig';
+import sortConfig from '../config/sortConfig';
 import useFetch from '../hooks/useFetch';
 
 const BackgroundContainer = styled.div`
@@ -26,6 +27,12 @@ function ProjectsContent(data) {
 	for (var i=0; i < data.length; i++) {
 		types.add(data[i].type)
 	}
+	const typesArray = Array.from(types).sort((a, b) => {
+		// return (sortConfig.tagOrders[a] || 100) - (sortConfig.tagOrders[b] || 100);
+		return (sortConfig.projectOrders[a] || 100) - (sortConfig.projectOrders[b] || 100);
+	})
+
+	types = new Set(typesArray);
 
 	var innerContent = Array.from(types).map((type) => {
 		const projects = data.filter((item) => item.type === type)
