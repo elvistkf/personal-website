@@ -1,8 +1,8 @@
 const sortConfig = {
     projectOrders: {
-        'Personal': 1,
-        'Internship': 2,
-        'Research': 3
+        'personal': 1,
+        'internship': 2,
+        'research': 3
     },
     tagOrders: {
         // Project Tags
