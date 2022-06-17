@@ -1,4 +1,5 @@
 # Personal Website with ReactJS
+[![Netlify Status](https://api.netlify.com/api/v1/badges/da2bf514-0ca6-4505-a360-df405d8361b5/deploy-status)](https://app.netlify.com/sites/elvistsang/deploys)
 
 A personal website to showcase projects, publications and relevant skills.
 
