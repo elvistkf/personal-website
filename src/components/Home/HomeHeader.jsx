@@ -176,9 +176,9 @@ function HomeHeader() {
                     <MobileTitle>KTH Royal Institute of Technology</MobileTitle> */}
                     <Roles>Aspiring Data Analyst</Roles>
                     <Description>
-                        I am a Ph.D. candidate in Electrical Engineering with focus on Decision Making in Distributed Systems, inspired by Optimisation, Machine Learning and Data-Driven approaches.
+                        A self-motivated, independent aspiring data analyst passionate in developing effective data-driven solutions to solve business needs.
                         <br /><br />
-                        Currently seeking career opportunities as a Data Analyst in Hong Kong.
+                        Currently seeking career opportunities as a <b>Data Analyst</b> in Toronto from September 2022.
                     </Description>
                     <LinkContainer>
                         <LinkBtn colour="#4169e1" onClick={() => window.open("https://www.linkedin.com/in/elviskftsang/")}>

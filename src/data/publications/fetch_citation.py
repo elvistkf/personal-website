@@ -6,11 +6,6 @@ from scholarly import ProxyGenerator
 # pg.FreeProxies()
 # scholarly.use_proxy(pg)
 
-while True:
-    using_vpn = input("Are you using VPN?")
-    if using_vpn.lower() == "yes":
-        break
-
 
 def fetch(old, new):
     open(new, 'w').write("")
@@ -51,6 +46,10 @@ def main():
     os.replace('journal_updated.jsx', 'journal.jsx')
 
 if __name__ == "__main__":
+    while True:
+        using_vpn = input("Are you using VPN?")
+        if using_vpn.lower() == "yes":
+            break
     main()
 
 

@@ -3,12 +3,12 @@
 
 A personal website to showcase projects, publications and relevant skills.
 
-The general architecture is shown in the following figure:
+The general architecture of the full stack application is shown in the following figure:
 
 ![](architecture.png)
 
 ## Front End 
-The front end is developed with ReactJS to create a responsive and dynamic website.
+The front end is developed with ReactJS to create a responsive and dynamic website (this repository).
 
 The components and pages definitions can be found in [src/components](/src/components/) and [src/pages](/src/pages/) respectively.
 

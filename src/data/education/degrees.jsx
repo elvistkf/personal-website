@@ -4,6 +4,7 @@ const degrees = [{
         subject: "Electrical Engineering",
         institution: "KTH Royal Institute of Technology",
         startYear: 2020,
+        endYear: 2022
     },
     {
         degree: "Master of Philosophy",
